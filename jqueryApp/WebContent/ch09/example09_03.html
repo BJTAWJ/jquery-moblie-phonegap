@@ -12,7 +12,20 @@ div {
 <script src="../js/jquery.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {	
+	   $("#menu1").click(function() {
+		$("#message1").load("menu.html");
+	});
 	   
+	   $("#menu2").click(function() {
+		$.ajax({
+			url:"menu.html",
+			dataType:"html",
+			success:function(data)
+			{
+				$("#message2").html(data);
+			}
+		});
+	})
 });
 </script>
 </head>
