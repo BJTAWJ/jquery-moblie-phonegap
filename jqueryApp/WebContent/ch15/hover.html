@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script>
+   $(document).ready(function() {
+      $('img.hover').hover(
+         function() {
+            var currentImg = $(this).attr('src');
+            $(this).attr('src', $(this).attr('name'));
+            $(this).attr('name', currentImg);
+         }, 
+         function() {
+            var currentImg = $(this).attr('src');
+            $(this).attr('src', $(this).attr('name'));
+            $(this).attr('name', currentImg);
+         });//$('img.hover').hover(
+      $('img.hover').hover(
+         function() {
+             var largeAlt = $(this).attr("title");
+            $("#project2").html(" " + largeAlt + ""); return false;
+         },
+         function() {
+             $("#project2").html(""); return false;
+         });//$('img.hover').hover(
+      $("#s1").hover(
+         function () {
+             $(this).css({ cursor:"pointer"});
+         }, 
+         function () {
+             $(this).css({ color:"afbd21" });
+         }
+      );//$("#s1").hover(      
+   });//$(document).ready(function() {
+</script>
+</head>
+<body>
+   <div id="s1">
+	<img name="graphics/images/im15.jpg" class="hover"
+		src="graphics/images/im15GRAY.jpg" border="0" width="90" 
+		height="63" alt="" title="선글라이스"/>
+					
+	<img name="graphics/images/im17.jpg" class="hover" 
+	    src="graphics/images/im17GRAY.jpg" border="0" width="90" 
+		height="63" alt="" title="똘이 사진" />
+								
+     <img name="graphics/images/image6.jpg" class="hover"
+        src="graphics/images/image6GRAY.jpg" border="0" width="90"
+        height="63"  alt="" title="옆모습" />
+        
+      <h4 style="margin-left: 10px; clear: both;" id="project2"></h4>
+   </div>   
+</body>
+</html>

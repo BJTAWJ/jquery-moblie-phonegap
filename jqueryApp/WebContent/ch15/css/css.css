@@ -1,0 +1,103 @@
+Body, p {
+	font-family: Verdana, sans-serif;
+	font-size: 10.5px;
+	line-height: 16.5px;
+	color: #666666;
+	margin-bottom:10.5px;
+	}
+H1 	{
+	font-family: Georgia, serif;
+	font-size: 16px;	
+	font-weight: bold;
+	color: orange;
+	}
+H3 	{
+	font-family: Verdana, sans-serif;
+	font-size: 1em;
+	font-weight: normal;
+	color:  #737b35;
+	}	
+H2 	{
+	font-family: Verdana, sans-serif;
+	font-size: 12px;	
+	font-weight: normal;
+	color:  orange;
+	}	
+a:link {
+	font-family: Verdana, sans-serif;
+	color: orange;
+	text-decoration: none;
+	}
+a:hover {
+	text-decoration: underline;
+	}
+a:visited {
+	color: orange;
+	text-decoration: none;
+	}
+.navmenu {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: orange;
+	border-bottom: 1px solid orange;
+	}
+.navmenu a:hover {
+	text-decoration: none;
+	color: #ffffff;
+	}
+.navmenu h3 {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	color: orange;
+	}		
+.navmenusub	p {
+	font-family: Verdana, sans-serif;
+	font-size: 10.5px;
+	text-decoration: none;
+	color: orange;
+	margin-bottom:0px;
+	}
+.navmenusub	a:hover {
+	color: #ffffff;
+	}
+.accordion div.navmenusub {
+	display:none
+	}	
+
+.container {
+	margin-left: 30px;
+	margin-top:20px;
+	width: 960px;
+	}
+.grid_1,
+.grid_2,
+.grid_3{
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.container .grid_1 {
+	width: 220px;
+}
+
+.container .grid_2 {
+	width: 520px;
+}
+
+.container .grid_3 {
+	width: 820px;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+

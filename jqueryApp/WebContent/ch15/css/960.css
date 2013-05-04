@@ -1,0 +1,42 @@
+
+.container {
+	margin-left: 30px;
+	margin-top:20px;
+	width: 960px;
+}
+.grid_4,
+.grid_9,
+.grid_14{
+	display: inline;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.container .grid_4 {
+	width: 220px;
+}
+.alpha {
+	margin-left: 0;
+}
+
+.omega {
+	margin-right: 0;
+}
+
+.container .grid_9 {
+	width: 520px;
+}
+
+.container .grid_14 {
+	width: 820px;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+

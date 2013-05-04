@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>::::: practice example :::::</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/css.css" /> 
+<style type="text/css" media="all">
+body{
+  background: #484540;  padding: 20px 0 40px;
+}
+.container{
+  background: #fff url(graphics/background.jpg) repeat-y;
+}
+.container .grid_2_menu{
+  display: inline;  float: left;
+  margin-left: 0px;  margin-right: 0px;  margin-top:150px;
+  width: 110px;  color:#fff;
+}
+
+.container .grid_3 {
+  background: #fff;
+}
+.container .grid_3_x {
+  display: inline; float: left;  width: 850px;
+  margin-left: 0px;  margin-right: 0px;
+  background: #fff;
+}
+#s2 { -grid-class: grid_1 last; }
+</style>
+
+<!-- 플러그인을 인클루드한다. -->
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.cycle.all.min.js" type="text/javascript" ></script>
+<script>
+  $(document).ready(function(){
+    $("#.accordion h3").hover(
+      function () {
+        $(this).css({ color:"ffffff", cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+    //문서가 로드되자마자 category 메뉴의 서브 메뉴 항목이 펼쳐지도록 한다.
+    $(".accordion div#category").show();        
+    $(".accordion h3").click(function(){
+    /* is(':visible')을 사용해서 서브 메뉴 항목을 갖은 주 메뉴(accordion h3)가 
+      보이는 상황인지를  파악하여 그 결과값을 변수 selfClick에 저장한다.   
+      현재 펼쳐진(보이는) 상태인 메뉴를 클릭하였다면 true를 갖게 되고 
+      접혀진(보이지 않는) 상태인 메뉴를 클릭하였다면 false를 갖게 된다. */
+      var selfClick=$(this).next("div").is(':visible');
+    /* selfClick가 false 값을 갖고 있는 상태이면 조건에 만족하여 if 문 
+      안쪽의 구문이 수행된다. 접혀진 상태이기 때문에 보이지 않는 메뉴를 클릭
+      하였다면 주위의 펼쳐진 메뉴가 접히고 현재 선택된 메뉴를 펼치기 위한 
+      처리가 일어나고 펼쳐진 상태이면 아무런 처리도 하지 않는다. */
+         if(!selfClick){ /* 선택된 메뉴의 부모 엘리먼트들의
+            자식 엘리먼트 중에서 주 메뉴(accordion h3)를 찾는다.  */
+            $(this).parents().find(".accordion h3")
+               /* 찾은 메뉴의 형제 엘리먼트 중 보이는 div를 슬라이딩한다. */
+               .next("div:visible").slideToggle("slow");
+           }
+           /* 클릭한 메뉴의 형제 엘리먼트 중 div의 상태를 토글한다. 
+              항목이 열려 있다면 닫고 닫혀 있다면 연다.  */
+           $(this).next("div").slideToggle("slow");               
+        });
+    
+    /* 호버 효과를 적용할 엘리먼트를 찾는다. */ 
+    $('img.hover').hover(
+        /* 마우스 포인터가 엘리먼트에 들어왔을 때 동작하는 함수 */
+        function() {
+          /* 마우스 포인터가 올려 진 이미지의 'src' 속성을 
+             변수 currentImg에 저장해 둔다. */
+          var currentImg = $(this).attr('src');
+          /* 이미지의 'name' 속성 값을 'src' 속성 값으로 설정한다. */ 
+          $(this).attr('src', $(this).attr('name'));
+          /* currentImg에 저장해 둔 'src' 속성 값을 'name'에 설정한다. */
+          $(this).attr('name', currentImg);
+        }, 
+        /* 마우스 포인터가 엘리먼트 밖으로 벗어났을 때 동작하는 함수 */
+        function() {
+          /* 이미 마우스가 올라가서 'src'과 'name' 속성 값을 서로 뒤바꾼 
+             상태이기 때문에 마우스가 이미지 밖으로 벗어났을 때 다시 원상
+             복귀를 하기 위해서 'src' 속성 값과 'name' 속성 값을 다시 바꾼다.*/  
+          var currentImg = $(this).attr('src');
+          $(this).attr('src', $(this).attr('name'));
+          $(this).attr('name', currentImg);
+        });//$('img.hover').hover(
+    
+        $('img.hover').hover(
+          function() {
+            /* 마우스 포인터가 올려 진 이미지의 ‘title’ 속성값을 변수 largeAlt에 
+               저장했다가 이를 id가 project2인 엘리먼트(54:)에 출력한다.  */
+            var largeAlt = $(this).attr("title");
+            $("#project2").html(" " + largeAlt + ""); return false;
+          },
+          function() {
+            /* 마우스가 이미지를 벗어나면 project2(54:)의 내용을 비운다.*/
+            $("#project2").html(""); return false;
+          });//$('img.hover').hover(
+
+          $("#s1").hover(
+            function () {
+            /* s1 엘리먼트에 마우스가 올라가면 마우스 포인터가 변경된다.  */
+              $(this).css({ cursor:"pointer"});
+            }, 
+            function () {
+            /* 마우스가 s1 엘리먼트를 벗어났을 때 글자 색상을 변경한다.  */
+              $(this).css({ color:"afbd21" });
+            }
+          );//$("#s1").hover(
+
+     $('#s1').cycle({ 
+        fx:     'fade',   //사용할 효과를 설정한다. 
+        speed:  300,      //속도를 설정한다. 
+        next:   '#next1', //다음 이미지가 나타나도록 할 엘리먼트를 설정한다. 
+        prev:   '#prev1', //이전 이미지가 나타나도록 할 엘리먼트를 설정한다. 
+        timeout: 0        //전환 효과 사이의 시간을 결정 
+    });
+
+    $("#next1").hover(
+      function () {
+        $(this).css({ cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+
+    $("#prev1").hover(
+      function () {
+        $(this).css({ cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+  
+    $('#s2').cycle({ 
+        fx:     'fade', 
+        speed:  300, 
+        next:   '#next2', 
+        prev:   '#prev2',
+        timeout: 0 
+    });
+
+    $("#s2").hover(
+      function () {
+        $(this).css({ cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+    $("#next2").hover(
+      function () {
+        $(this).css({ cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+    $("#prev2").hover(
+      function () {
+        $(this).css({ cursor:"pointer"});
+      }, 
+      function () {
+        $(this).css({ color:"afbd21" });
+      }
+    );
+  });
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <div class="clear">&nbsp;</div>
+  <!-- left menu start -->  
+  <div class="grid_2_menu">
+    
+    <div class="accordion">
+      <div class="navmenu"><a href="#"> HOME </a></div>
+      <div class="navmenu">
+        <!--accordion의 자식 엘리먼트 중 h3가 서브 메뉴 항목을 갖은 메뉴-->
+        <h3 id="navigatorlink">NAVIGATOR &gt;</h3>
+        <!-- h3의 형제 엘리먼트 중 바로 다음의 엘리먼트가 서브 메뉴 항목-->
+        <div class="navmenusub" id="navigator">
+               <p><a href="#">new book</a></p>
+               <p><a href="#">reservation</a></p>   
+               <p><a href="#">bestseller</a></p>
+               <p><a href="#">board</a></p>
+               <p><a href="#">pds</a></p>
+        </div>
+      </div>
+      <div class="navmenu">
+        <h3 id="categorylink"> CATEGORY &gt;</h3>
+        <div class="navmenusub" id="category">
+               <p><a href="#"> network </a></p>
+               <p><a href="#"> office </a></p>
+               <p><a href="#"> programming </a></p>
+               <p><a href="#"> graphics </a></p>
+        </div>
+      </div>
+      <div class="navmenu"><a href="#">NEWS</a></div>
+      <div class="navmenu"><a href="#">CONTACT</a></div>
+    </div>
+    
+  </div> 
+  <!-- left menu end -->
+  
+  <div class="grid_3">
+    <!-- large image gallery start --> 
+    <div class="grid_2 first" style="padding-left:10px">
+      
+      <div id="s1" style="margin-top:10px">       
+        <img src="graphics/images/image6.jpg" width="520" height="345"/>  
+        <img src="graphics/images/image3.jpg" width="520" height="345"/>
+        <img src="graphics/images/image4.jpg" width="520" height="345"/>
+        <img src="graphics/images/img10.jpg"  width="520" height="345"/>
+        <img src="graphics/images/image7.jpg" width="520" height="345"/>  
+        <img src="graphics/images/image5.jpg" width="520" height="345"/>  
+      </div>
+      
+      <div align="right" style="margin-top:5px">        
+        MORE 
+        <img src="graphics/prev_off.jpg" width="10" height="11" 
+        alt="pre" title="pre" name="graphics/prev_on.jpg" class="hover" 
+        id="prev1" style="margin-right:10px"/>
+        
+        <img src="graphics/next_off.jpg" width="10" height="11" 
+        alt="next" title="next" name="graphics/next_on.jpg" class="hover"
+        id="next1"/>          
+      </div> 
+    </div> <!-- <div class="grid_2 first"> -->
+    <!-- large image gallery end --> 
+    
+    <!-- small many image gallery start --> 
+    <div class="grid_1 last" style="margin-top:10px">
+      <div id="s2" style="height:365px" >  
+                  
+        <div>
+          <div style="height:340px" >
+          
+          <table width="220" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <!-- 여러 이미지에 호버 효과를 넣기 위해서 호버 효과를 적용하
+려는 이미지 태그에 class="hover" 속성을 추가한다. 이미지의 name 속성 값에 마우스를 이미지 위에 올렸을 때 화면에 출력할 이미지 경로를 지정한다.  -->
+                <img name="graphics/images/im15.jpg" class="hover"
+                src="graphics/images/im15GRAY.jpg" border="0"  
+                width="90" height="63" alt="" style="margin-left:10px" 
+                title="선글라이스" /></a>
+              </div>
+              </td>
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/im17.jpg" class="hover"
+                src="graphics/images/im17GRAY.jpg"  border="0" 
+                width="90" height="63" alt="" title="똘이 사진"/></a>
+              </div>
+              </td>
+            </tr>            
+            <tr>  
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/img10.jpg" class="hover" 
+                src="graphics/images/img10GRAY.jpg" border="0" 
+                width="90" height="63" alt="" style="margin-left:10px" 
+                title="발바닥" /></a>
+              </div>
+              </td>
+              
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/image6.jpg" class="hover"
+                 src="graphics/images/image6GRAY.jpg" border="0" 
+                width="90" height="63" alt="" title="옆모습" /></a>
+              </div>
+              </td>
+            </tr>            
+            <tr>  
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/image5.jpg" class="hover"
+                src="graphics/images/image5GRAY.jpg" border="0"
+                width="90" height="63" alt="" style="margin-left:10px"
+                title="낮잠" /></a>
+              </div>
+              </td>              
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/image7.jpg" class="hover"
+                src="graphics/images/image7GRAY.jpg" border="0" 
+                width="90" height="63" alt="" title="새침" /></a>
+              </div>
+              </td>
+            </tr>            
+            <tr>  
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/image3.jpg" class="hover"
+                src="graphics/images/image3GRAY.jpg" border="0" 
+                width="90" height="63" alt="" style="margin-left:10px" 
+                title="숨박꼭질" /></a>
+              </div>
+              </td>              
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/image4.jpg" class="hover" 
+                src="graphics/images/image4GRAY.jpg"border="0" 
+                width="90" height="63" alt="" title="을이 사진" /></a>
+              </div>
+              </td>
+            </tr>              
+          </table>
+          </div> <!-- <div style="height:340px"> -->
+          <h4 style="margin-left:10px;clear:both;" id="project1"></h4>
+        </div>  
+                    
+        
+        <div>        
+          <div style="height:340px">
+            <table width="220" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/dog1.jpg" class="hover"
+                src="graphics/images/dog1GRAY.jpg" border="0"
+                width="90" height="63" alt="" style="margin-left:10px"
+                title="도니" /></a>
+              </div>
+              </td>
+              
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/dog2.jpg" class="hover"
+                src="graphics/images/dog2GRAY.jpg" border="0"
+                width="90" width="90" height="63" alt="" title="미니" /></a>  
+              </div>
+              </td>          
+            </tr>
+            <tr>  
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/dog3.jpg" class="hover"
+                src="graphics/images/dog3GRAY.jpg" border="0"
+                width="90" width="90" height="63" alt=""
+                style="margin-left:10px" title="에프릴" /></a>
+              </div>
+              </td>
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/img6.jpg" class="hover"
+                src="graphics/images/img6GRAY.jpg" border="0" 
+                width="90" height="63" alt="" title="주홍이" /></a>
+              </div>
+                </td>
+              </tr>
+              <tr>    
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/img7.jpg" class="hover"
+                src="graphics/images/img7GRAY.jpg" border="0" 
+                width="90" height="63" alt="" title="윙크" /></a>
+              </div>
+              </td>              
+              <td width="110">
+              <div style="height:85px">
+                <a href="#">
+                <img name="graphics/images/img8.jpg" class="hover" 
+                src="graphics/images/img8GRAY.jpg" border="0" 
+                width="90" height="63" alt="" title="파랑이" /></a>
+              </div>
+              </td>
+            </tr>              
+            </table>          
+          </div>
+          <h4 style="margin-left:10px;clear:both;" id="project2"></h4>
+        </div>   
+      </div>  <!-- <div id="s2"> -->
+      
+      <div align="right" style="margin-top:5px;margin-right:20px">
+          MORE 
+          <img src="graphics/prev_off.jpg" width="10" height="11" 
+          alt="pre" title="pre" name="graphics/prev_on.jpg"
+          class="hover" id="prev2"  style="margin-right:10px"/>
+          <img src="graphics/next_off.jpg" width="10" height="11" 
+          alt="next" title="next" name="graphics/next_on.jpg" 
+          class="hover" id="next2"/>
+      </div> 
+    </div> <!-- <div class="grid_1 last" > -->
+     <!-- small many image gallery end -->
+         
+  </div> <!-- <div class="grid_3"> -->    
+    
+  <div class="grid_2 first" style="padding-left:120px">      
+      <h1 style="margin-top:10px"> 
+      Critical jQuery &amp; jQuery Mobile </h1>
+      <h2 style="margin-top:10px" align="right"> copy right by raccon </h2>
+  </div>
+</div>  <!--<div class="container">  -->  
+</body>
+</html> 

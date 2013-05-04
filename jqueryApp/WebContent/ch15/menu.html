@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/css.css" /> 
+<style type="text/css" media="all">
+body{
+   background: #484540;   padding: 20px 0 40px;
+}
+.container{
+   background: #fff url(graphics/background.jpg) repeat-y;
+}
+.container .grid_2_menu{
+   display: inline;   float: left;
+   margin-left: 0px;   margin-right: 0px;   margin-top:10px;
+   width: 110px;   color:#fff;
+}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script>
+   $(document).ready(function(){
+      $("#.accordion h3").hover(
+         function () {
+            $(this).css({ color:"ffffff", cursor:"pointer"});
+         }, 
+         function () {
+           $(this).css({ color:"afbd21" });
+         }
+      );      
+     
+      $(".accordion div#category").show();
+      
+      $(".accordion h3").click(function(){
+    	 var selfClick=$(this).next("div").is(':visible');
+    	  if(!selfClick){
+    	  	$(this).parents().find(".accordion h3")
+    	  	       .next("div:visible").slideToggle("slow");
+      	  }
+          $(this).next("div").slideToggle("slow");               
+      });
+   });
+  </script>
+</head>
+<body>
+
+<div class="container">
+   <div class="grid_2_menu">
+      <div class="accordion">
+         <div class="navmenu"><a href="#"> HOME </a></div>
+         <div class="navmenu">
+          	<h3 id="navigatorlink">NAVIGATOR &gt;</h3>
+            <div class="navmenusub" id="navigator">
+               <p><a href="#">new book</a></p>
+               <p><a href="#">reservation</a></p>   
+               <p><a href="#">bestseller</a></p>
+               <p><a href="#">board</a></p>
+               <p><a href="#">pds</a></p>
+            </div>
+         </div>
+         <div class="navmenu">
+            <h3 id="categorylink"> CATEGORY &gt;</h3>
+            <div class="navmenusub" id="category">
+               <p><a href="#"> network </a></p>
+               <p><a href="#"> office </a></p>
+               <p><a href="#"> programming </a></p>
+               <p><a href="#"> graphics </a></p>
+            </div>
+         </div>
+         <div class="navmenu"><a href="#">NEWS</a></div>
+         <div class="navmenu"><a href="#">CONTACT</a></div>
+      </div>
+      
+   </div>
+</div>   <!--<div class="container">  -->   
+</body>
+</html> 

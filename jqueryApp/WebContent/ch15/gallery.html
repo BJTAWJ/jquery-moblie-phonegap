@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>::::: practice example :::::</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="css/css.css" /> 
+<style type="text/css" media="all">
+body{
+  background: #484540;  padding: 20px 0 40px;
+}
+.grid_2{
+  background: #fff; width:530px
+}
+
+</style>
+
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery.cycle.all.min.js" type="text/javascript" ></script>
+<script>
+  $(document).ready(function(){	
+	  
+     $('#s1').cycle({ 
+        fx:     'fade', 
+        speed:  300, 
+        next:   '#next1', 
+        prev:   '#prev1',
+        timeout: 0 
+    });
+
+    $("#next1").hover(
+           function () {
+              $(this).css({ cursor:"pointer"});
+            }, 
+          function () {
+               $(this).css({ color:"afbd21" });
+        }
+      );
+
+    $("#prev1").hover(
+           function () {
+              $(this).css({ cursor:"pointer"});
+            }, 
+          function () {
+               $(this).css({ color:"afbd21" });
+        }
+      ); 
+  });
+  </script>
+</head>
+<body>
+  <div class="clear">&nbsp;</div>
+    <div class="grid_2 first" style="padding-left:10px ">      
+      <div id="s1" style="margin-top:10px">       
+        <img src="graphics/images/image6.jpg" width="520" height="345" />  
+        <img src="graphics/images/image3.jpg" width="520" height="345" />
+        <img src="graphics/images/image4.jpg" width="520" height="345" />
+        <img src="graphics/images/img10.jpg"  width="520" height="345" />
+        <img src="graphics/images/image7.jpg" width="520" height="345" />  
+        <img src="graphics/images/image5.jpg" width="520" height="345" />  
+      </div>
+      
+      <div align="right" style="margin-top:5px">        
+        MORE 
+        <img src="graphics/prev_off.jpg" width="10" height="11" alt="pre" title="pre" 
+        name="graphics/prev_on.jpg" class="hover" id="prev1" style="margin-right:10px"/>
+        
+        <img src="graphics/next_off.jpg" width="10" height="11" alt="next" title="next" 
+        name="graphics/next_on.jpg" class="hover" id="next1"/>          
+      </div> 
+    </div> <!-- <div class="grid_2 first"> -->
+</body>
+</html> 

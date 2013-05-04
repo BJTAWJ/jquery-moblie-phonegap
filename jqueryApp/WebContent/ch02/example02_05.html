@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>인접한 자손 엘리먼트를 노드로 추가하기</title>
+<style type="text/css">
+em {
+   font-size:20pt; line-height: 20pt; 
+   margin:20px;   color:blue;  
+}
+</style>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+   $(document).ready(function() {
+	   //메서드 체인 방식 : 트랜드
+     $("p em").css("backgroundColor", "yellow")//하위 전체
+     			  .each(function(){
+     				  //타켓에 마지막 자식을 추가한다. 새로운 엘리먼트를
+     				  $(".result1").append(this);
+     			  });
+     $("div > em").css("backgroundColor", "pink")//직계만
+     					.each(function()
+     							{
+     								//방향의 반대
+     								//새로운 엘리먼트가 마지막 자식으로 추가한다. 타켓에
+     								$(this).clone().appendTo(".result2");//append()는 이동하므로 clone() 복사해서 추가한다.
+     							});
+   });
+</script>
+</head>
+<body>
+   <p>
+      <em> one  </em>
+      <em> two  </em>
+      <span> <em> three </em> </span>
+   </p>
+   <div>
+      <em> four  </em>
+      <span> <em> five  </em> </span>
+      <em>six</em> 
+    </div>
+<hr>
+   <div>
+      <span> ancestor descendant로 검색된 엘리먼트 : </span>
+      <span class="result1"></span>
+   </div>
+   <div>
+      <span> parent &gt; child로 검색된 엘리먼트 : </span>
+      <span class="result2"></span>
+   </div>
+</body>
+</html>

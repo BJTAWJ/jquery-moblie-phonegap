@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>엘리먼트에 접근해서 스타일 지정하기-“element”, “#id”, “.class</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("span").css("color", "red");
+	$("#simpletext1").css("font-size", "30pt");
+	$(".simpletext1").css("font-style", "italic");
+})
+</script>
+</head>
+<body>
+	<span id="simpletext1">Simple</span>
+	<div class="simpletext1">jQuery</div>
+	<span>basic</span>
+	<div>simple</div>
+</body>
+</html>
