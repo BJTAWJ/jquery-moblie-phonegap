@@ -10,7 +10,11 @@
 <script type="text/javascript" src="../js/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
-	
+	//p 엘리먼트가 눌리면 또 다른 p 엘리먼트를 동생(형제)으로 추가하는 방법
+	//앞으로 생설될 엘리먼트에 대해서 이벤트를 처리하려면
+	$("p").live("click", function() {
+		$(this).after("<p>the other</p>")
+	})
 });
 </script>
 </head>
