@@ -20,12 +20,21 @@ $(function() {
   			
   			$.ajaxSetup(
   			{
-  					url: "logincheck.jsp"
+  					url: "logincheck11.jsp"
   					, type: "post"
   					, dataType: "text"
   					, success:function(data)
   					{
-  						$("#message").append(data)
+  						var jsonObject = JSON.parse(data);//문자열을 json형태로 변경
+  						var data = jsonObject.DATA[0];
+  						
+  						$("#message").append(jsonObject);
+  						if(data.result == "1")
+						{
+							$("form").remove();
+							$("#message").text("로그인 성공");
+						}
+  						else	$("#message").text("로그인 실패");
   					}
   			});
   			
@@ -35,6 +44,7 @@ $(function() {
 </script>
 </head>
 <body>
+	
     <form>  
     <label> 이름을 입력하세요 : </label>  
     <input type="text" name="username" class="username"/>  <br/>
