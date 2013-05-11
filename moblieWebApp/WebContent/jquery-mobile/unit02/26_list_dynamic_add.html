@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>jQuery Mobile</title> 
+		<meta charset="euc-kr" /> 	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+		<script type="text/javascript">
+			var num = 3;
+			function addItem() {
+				var list1 = $("#list1");
+				list1.append("<li><a href='#'>Item " + (++num) + "</a></li>");
+				list1.listview("refresh");
+			}
+		</script>
+	</head> 
+
+	<body>
+		<div data-role="page">       
+			<div data-role="header">	    
+				<h1>Dynamic AddItem</h1>
+				<a href="javascript:addItem();" data-icon="plus" class="ui-btn-right">Add</a>
+			</div>
+							
+			<div data-role="content">
+				<ui id="list1" data-role="listview">
+					<li><a href="#">Item 1</a></li>
+					<li><a href="#">Item 2</a></li>
+					<li><a href="#">Item 3</a></li>
+				</ui>
+			</div>
+		</div>
+	</body>
+</html>
+

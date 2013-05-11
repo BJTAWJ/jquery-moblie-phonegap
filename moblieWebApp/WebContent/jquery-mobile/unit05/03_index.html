@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>jQuery Mobile</title> 
+		<meta charset="euc-kr" /> 	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+		<script type="text/javascript">
+			$(document).bind("mobileinit", function() {
+				$.support.cors = true;
+				$.mobile.allowCrossDomainPages = true;
+			});
+		</script>
+ 
+		<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+	
+	</head> 
+
+	<body>
+    <div id="home" data-role="page">
+    	<div data-role="header">
+    		<h1>홈</h1>
+    	</div>
+    	<div data-role="content">
+			<a href="http://192.168.0.2:8181/mobileWebApp/jquery-mobile/unit05/03_phonelist.jsp" 
+				data-role="button">폰 목록</a>
+    	</div>
+    </div>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>jQuery Mobile</title> 
+		<meta charset="euc-kr" /> 	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+		<script type="text/javascript">	
+			$(function() {
+				//웹앱 
+				if(window.orientation == 0) {
+					$("#backImg").attr("src", "../image/big-image-portrait.png");
+				} else {
+					$("#backImg").attr("src", "../image/big-image-landscape.png");
+				}
+				$(window).bind("orientationchange", function(event) {
+					if(event.orientation == "portrait") {
+						$("#backImg").attr("src", "../image/big-image-portrait.png");
+					} else {
+						$("#backImg").attr("src", "../image/big-image-landscape.png");
+					}
+				});
+			});
+		</script> 
+	</head> 
+
+	<body>
+		<div data-role="page">
+			<div data-role="content" style="padding:0px">
+				<img id="backImg" src=""/>
+			</div>
+		</div>
+	</body>
+</html>
