@@ -5,9 +5,11 @@
 <title>플러그인 개발</title>
 <script src="../js/jquery.js" type="text/javascript"></script>
 <script src="jquery.highlight.js" type="text/javascript"></script>
+<script src="jquery.redtext.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function() {
-  
+  	$("span").highlight().css("text-decoration", "underline");
+  	$("div").redtext().css("text-decoration", "underline");
 });
 </script>
 </head>

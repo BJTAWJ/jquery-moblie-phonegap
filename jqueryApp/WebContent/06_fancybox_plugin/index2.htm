@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="Stylesheet" href="fancybox/jquery.fancybox-1.3.4.css"/>
+    <style>
+        #images { overflow: hidden; }
+        .flickr_image { float: left; }
+        .flickr_image > img {
+            width: 200px; height: 120px;
+            float: left;
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script src="fancybox/jquery.fancybox-1.3.4.js"></script>
+    <script src="fancybox/jquery.easing-1.3.pack.js"></script>
+    <script src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script>
+        $(document).ready(function () {
+        	$("#submit").click(function()
+			{
+			    var url = "http://api.flickr.com/services/feeds/photos_public.gne?tagmode=any&jsoncallback=?";
+			    $.getJSON(url, $("form").serialize(), function(data)
+				{
+//					console.log(data);
+					
+					$.each(data.items, function()
+					{
+						console.log(this.media.m);
+						var $image = $("<img/>").attr("src", this.media.m);
+						$("<a></a>").attr(
+								{
+									"class" : "flickr_image"
+									, "rel" : "fancybox"
+									, "href" : this.media.m
+								}
+						)
+						.html($image)
+						.appendTo("#images");
+						
+						//$("#images").append('<a class="flickr_image" title="Desert"  rel="fancybox" href="'+ this.media.m + '"><img src="' + this.media.m + '"></a>');
+					});
+				    
+				    $("a.flickr_image").fancybox();
+				});
+			    
+			    return false;
+			});
+        });
+    </script>
+</head>
+<body>
+    <h1>Flickr Image Album jQuery FancyBox</h1>
+    <form id="search_form">
+        <input type="text" name="tags"/>
+        <input type="hidden" name="format" value="json"/>
+        <input id="submit" type="submit" value="°Ë»ö"/>
+    </form>
+    <div id="images"></div>
+</body>
+</html>
