@@ -13,6 +13,7 @@ public class MainActivity extends DroidGap {
 		super.onCreate(savedInstanceState);
 		
 //		setContentView(R.layout.activity_main);
-		super.loadUrl("file:///android_asset/www/index.html");
+//		super.loadUrl("file:///android_asset/www/index.html");
+		super.loadUrl("http://192.168.3.1:8181/VirtualUniversity/index.html");
 	}
 }
