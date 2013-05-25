@@ -2,14 +2,149 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-<style type="text/css">
-	h1 {
-		color: green;
-	}
-</style>
+<title>가상 대학교</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<!-- 이후에 기록 -->
+	<style type="text/css">
+		#logo {
+			text-indent: -999px;
+			background-image: url("images/CI_TITLE.png");
+			width: 176px;
+			height: 132px;
+			margin-top: 0;
+			margin-bottom: 10px;
+			/* 가운데 정렬 */
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#title_style {
+			padding-top: 13px;
+		}
+		.small {
+			width: 50%;
+		}
+	</style>
+	
+	<link href="photoswipe/examples/jquery-mobile.css" type="text/css" rel="stylesheet" />
+	<link href="photoswipe/photoswipe.css" type="text/css" rel="stylesheet" />
+	
+	<script type="text/javascript" src="photoswipe/lib/klass.min.js"></script>
+	<script type="text/javascript" src="photoswipe/code.photoswipe.jquery-3.0.5.min.js"></script>
+	
+	
+	<script type="text/javascript">
+		
+		/*
+		 * IMPORTANT!!!
+		 * REMEMBER TO ADD  rel="external"  to your anchor tags. 
+		 * If you don't this will mess with how jQuery Mobile works
+		 */
+		
+		(function(window, $, PhotoSwipe){
+			
+			$(document).ready(function(){
+				
+				$('div.gallery-page')
+					.live('pageshow', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							options = {},
+							photoSwipeInstance = $("ul.gallery a", e.target).photoSwipe(options,  currentPage.attr('id'));
+							
+						return true;
+						
+					})
+					
+					.live('pagehide', function(e){
+						
+						var 
+							currentPage = $(e.target),
+							photoSwipeInstance = PhotoSwipe.getInstance(currentPage.attr('id'));
+
+						if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
+							PhotoSwipe.detatch(photoSwipeInstance);
+						}
+						
+						return true;
+						
+					});
+				
+			});
+		
+		}(window, window.jQuery, window.Code.PhotoSwipe));
+		
+	</script>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#pic_president").click(function(){
+				$(this).toggleClass("small");
+			});
+		});
+	</script>
 </head>
 <body>
-	<h1>Hello Hybrid App</h1>
+	<!-- 시작 -->
+	<div data-role="page" id="main">
+		<div data-role="header">
+			<h1 id="logo">가상대학교</h1>
+		</div>
+		<div data-role="content">
+			<ul data-role="listview" data-inset="true">
+				<li><a href="#campus_image"><img alt="" src="images/pic_i.png"/><h3 id="title_style">캠퍼스 이미지</h3></a></li>
+				<li><a href="#intro"><img alt="" src="images/intro_i.png"/><h3 id="title_style">대학 소개</h3></a></li>
+				<li><a href="video.html" rel="external"><img alt="" src="images/movie_i.png"/><h3 id="title_style">홍보동영상</h3></a></li>
+				<li><a href="map.html" rel="external"><img alt="" src="images/map_i.png" /><h3 id="title_style">맵</h3></a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 캠퍼스 이미지 -->
+	<div data-role="page" id="campus_image" class="gallery-page">
+		<div data-role="header">
+			<h1>캠퍼스 이미지</h1>
+			<a href="#" data-rel="back" data-icon="arrow-l">HOME</a>
+		</div>
+		<div data-role="content">
+		
+			<ul class="gallery">
+			
+				<li><a href="pic/full/cb01.jpg" rel="external"><img src="pic/thumb/ca01.jpg" alt="Image 001" /></a></li>
+				<li><a href="pic/full/cb02.jpg" rel="external"><img src="pic/thumb/ca02.jpg" alt="Image 002" /></a></li>
+				<li><a href="pic/full/cb03.jpg" rel="external"><img src="pic/thumb/ca03.jpg" alt="Image 003" /></a></li>
+				<li><a href="pic/full/cb04.jpg" rel="external"><img src="pic/thumb/ca04.jpg" alt="Image 004" /></a></li>
+				<li><a href="pic/full/cb05.jpg" rel="external"><img src="pic/thumb/ca05.jpg" alt="Image 005" /></a></li>
+				<li><a href="pic/full/cb06.jpg" rel="external"><img src="pic/thumb/ca06.jpg" alt="Image 006" /></a></li>
+				<li><a href="pic/full/cb07.jpg" rel="external"><img src="pic/thumb/ca07.jpg" alt="Image 007" /></a></li>
+				
+			</ul>
+		</div>
+	</div>
+	
+	<!-- 대학 소개 -->
+	<div data-role="page" id="intro" data-add-back-btn="true" data-back-btn-text="HOME">
+		<div data-role="header">
+			<h1>대학 소개</h1>
+		</div>
+		<div data-role="content">
+			<img class="small" alt="" src="images/univ.jpg" id="pic_president">
+           	<p>안녕하십니까? 버추얼 대학교에 관심을 가져주셔서 감사합니다. 
+           	버추얼 대학교는 1세기의 역사를 지니며 그 동안 많은 발전을 거듭하였습니다. </p>
+			<p>버추어 대학교는 세계에서 가장 선도적인 대학교 중의 하나로 인정받고 있습니다. 
+			설립목적은 사회와 개인에 직접적인 기여와 성공을 준비할 수 있도록 하는 것입니다. 
+			궁극적으로는 인류문명에 유용한 인재를 양성하는 것입니다. 
+			오늘날 버추얼 대학교는 현재 인류가 당면하고 있는 여러 문제를 해결하고 
+			다음 세대를 선도할 수 있는 리더가 될 수 있도록 학생들을 준비시키는 것입니다. </p>
+			<p>여러분의 미래를 버추얼 대학교에서 함께하시길 희망합니다. </p>
+			<p>총창 Luke Andrew</p>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h2>버추얼 대학교</h2>
+		</div>
+	</div>
 </body>
 </html>
