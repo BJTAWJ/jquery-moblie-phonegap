@@ -2,11 +2,25 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>가상 대학교</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+	<link href="http://vjs.zencdn.net/4.0/video-js.css" rel="stylesheet">
+	<script src="http://vjs.zencdn.net/4.0/video.js"></script>
+	<style type="text/css">
+		.content-style {
+			padding-left:0;
+			padding-right:0;
+		}
+		#video_canvas {
+			margin: 0 auto;
+			width: 640px;
+			height: 264px;
+		}
+	</style>
 </head>
 <body>
 	<div data-role="page">
@@ -14,7 +28,14 @@
 			<a href="index.html" data-icon="home" rel="external">HOME</a>
 			<h1>홍보 동영상</h1>
 		</div>
-		<div data-role="content">
+		<div data-role="content" class="content-style">
+			<div id="video_canvas">
+				<video id="example_video_1" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264" poster="http://video-js.zencoder.com/oceans-clip.png" data-setup='{"example_option":true}'>
+					<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+					<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+					<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+				</video>
+			</div>
 		</div>
 	</div>
 </body>

@@ -23,6 +23,9 @@
 		#title_style {
 			padding-top: 13px;
 		}
+		.small {
+			width: 50%;
+		}
 	</style>
 	
 	<link href="photoswipe/examples/jquery-mobile.css" type="text/css" rel="stylesheet" />
@@ -74,7 +77,15 @@
 		
 		}(window, window.jQuery, window.Code.PhotoSwipe));
 		
-	</script>	
+	</script>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#pic_president").click(function(){
+				$(this).toggleClass("small");
+			});
+		});
+	</script>
 </head>
 <body>
 	<!-- 시작 -->
@@ -87,7 +98,7 @@
 				<li><a href="#campus_image"><img alt="" src="images/pic_i.png"/><h3 id="title_style">캠퍼스 이미지</h3></a></li>
 				<li><a href="#intro"><img alt="" src="images/intro_i.png"/><h3 id="title_style">대학 소개</h3></a></li>
 				<li><a href="video.html" rel="external"><img alt="" src="images/movie_i.png"/><h3 id="title_style">홍보동영상</h3></a></li>
-				<li><a href="map.html"><img alt="" src="images/map_i.png" /><h3 id="title_style">맵</h3></a></li>
+				<li><a href="map.html" rel="external"><img alt="" src="images/map_i.png" /><h3 id="title_style">맵</h3></a></li>
 			</ul>
 		</div>
 	</div>
@@ -120,7 +131,19 @@
 			<h1>대학 소개</h1>
 		</div>
 		<div data-role="content">
-			<img alt="" src="images/most_value.jpg">
+			<img class="small" alt="" src="images/univ.jpg" id="pic_president">
+           	<p>안녕하십니까? 버추얼 대학교에 관심을 가져주셔서 감사합니다. 
+           	버추얼 대학교는 1세기의 역사를 지니며 그 동안 많은 발전을 거듭하였습니다. </p>
+			<p>버추어 대학교는 세계에서 가장 선도적인 대학교 중의 하나로 인정받고 있습니다. 
+			설립목적은 사회와 개인에 직접적인 기여와 성공을 준비할 수 있도록 하는 것입니다. 
+			궁극적으로는 인류문명에 유용한 인재를 양성하는 것입니다. 
+			오늘날 버추얼 대학교는 현재 인류가 당면하고 있는 여러 문제를 해결하고 
+			다음 세대를 선도할 수 있는 리더가 될 수 있도록 학생들을 준비시키는 것입니다. </p>
+			<p>여러분의 미래를 버추얼 대학교에서 함께하시길 희망합니다. </p>
+			<p>총창 Luke Andrew</p>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<h2>버추얼 대학교</h2>
 		</div>
 	</div>
 </body>
